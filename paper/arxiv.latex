@@ -1,0 +1,115 @@
+% arXiv-style LaTeX template for pandoc
+% Single-column, Palatino text, 1-inch margins, bold centred title, abstract box.
+
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,a4paper]{article}
+
+% ── Geometry ──
+\usepackage[margin=1in,a4paper]{geometry}
+
+% ── Fonts / encoding (xelatex) ──
+\usepackage{fontspec}
+$if(mainfont)$\setmainfont{$mainfont$}$endif$
+$if(monofont)$\setmonofont{$monofont$}$endif$
+\usepackage{microtype}
+\linespread{$if(linestretch)$$linestretch$$else$1.15$endif$}
+
+% ── Language (polyglossia for xelatex) ──
+\usepackage{polyglossia}
+$if(lang)$\setmainlanguage{$lang$}$else$\setmainlanguage{english}$endif$
+
+% ── Abstract ──
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\large\bfseries\centering}
+\renewcommand{\abstracttextfont}{\normalfont\small}
+\setlength{\absleftindent}{8mm}
+\setlength{\absrightindent}{8mm}
+
+% ── Sections ──
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.4em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+
+% ── Tables ──
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\renewcommand{\arraystretch}{1.15}
+
+% ── Figures ──
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=6pt,justification=justified}
+\setlength{\textfloatsep}{12pt}
+% Preserve aspect ratio for all images (pandoc emits height=\textheight which
+% would otherwise stretch wide figures vertically).
+\setkeys{Gin}{keepaspectratio}
+
+% ── Lists ──
+\usepackage{enumitem}
+\setlist[itemize]{nosep,leftmargin=*}
+\setlist[enumerate]{nosep,leftmargin=*}
+
+% ── Pandoc-generated helper macros ──
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+\providecommand{\pandocbounded}[1]{#1}
+
+% ── Hyperref / URLs ──
+\usepackage{xcolor}
+\definecolor{urlcol}{RGB}{0,102,204}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=urlcol,
+  citecolor=urlcol,
+  pdftitle={$title$},
+  pdfauthor={$for(author)$$if(author.name)$$author.name$$else$$author$$endif$$sep$ and $endfor$},
+}
+% xurl / \sloppy allow long typewriter URLs to break at any character and
+% never bleed past the right margin.
+\usepackage{xurl}
+\Urlmuskip=0mu plus 1mu
+% Also let \texttt (and therefore pandoc's `code` spans) break across lines.
+\makeatletter
+\def\UrlBreaks{\do\/\do\-\do\_\do\.\do\=\do\:\do\?\do\&\do\#\do\~}
+\makeatother
+
+% ── Title block ──
+\title{\LARGE\textbf{$title$}$if(subtitle)$\\[0.3em]\normalsize\normalfont\itshape $subtitle$$endif$}
+\author{%
+  $for(author)$$if(author.name)$$author.name$$else$$author$$endif$$sep$, $endfor$
+  \\[0.4em]
+  \normalfont\normalsize\itshape%
+  $if(institute)$$institute$$endif$%
+  $if(email)$ \,·\, \normalfont\ttfamily $email$$endif$%
+}
+\date{$date$}
+
+\begin{document}
+
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+$endif$
+
+\vspace{0.8em}
+
+$if(toc)$
+{\hrule height 0.4pt}
+\tableofcontents
+{\hrule height 0.4pt}
+\vspace{0.8em}
+$endif$
+
+$body$
+
+\end{document}

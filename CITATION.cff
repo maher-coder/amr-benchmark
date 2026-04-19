@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+title: "Beyond the AUROC: cohort bias, canonical-gene dominance, and clinical-label drift in machine-learning prediction of antimicrobial resistance"
+message: "If you use this work (paper, figures, code, or findings), please cite it as below."
+type: software
+authors:
+  - family-names: "El Ouahabi"
+    given-names: "Maher"
+    email: "maher.elouk2@gmail.com"
+repository-code: "https://github.com/maher-coder/amr-benchmark"
+url: "https://github.com/maher-coder/amr-benchmark"
+abstract: >-
+  A cross-cohort machine-learning benchmark for antimicrobial-resistance
+  prediction from bacterial genome assemblies. Using the CABBAGE December 2025
+  release (88,863 training and 14,251 held-out assemblies across nine and one
+  source cohorts respectively), we document three generalisable patterns:
+  cohort identity encodes the expected resistance rate to within ten
+  percentage points without any genotypic feature; resistance is
+  near-monogenic for most well-studied pathogen-drug combinations (a single
+  SNP explains 42 percentage points of AUROC for Neisseria gonorrhoeae ×
+  ciprofloxacin); and clinical R/S labels drift 1.8% under annual breakpoint
+  updates. We distil ten falsifiable generalisations about cohort-structured
+  clinical prediction.
+keywords:
+  - antimicrobial resistance
+  - machine learning
+  - cross-cohort generalisation
+  - bacterial genomics
+  - CABBAGE
+  - clinical prediction
+license: CC-BY-4.0
+license-code: MIT
+version: "1.0.0"
+date-released: "2026-04-19"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "El Ouahabi"
+      given-names: "Maher"
+  
+  title: "Beyond the AUROC: cohort bias, canonical-gene dominance, and clinical-label drift in machine-learning prediction of antimicrobial resistance"
+  year: 2026
+  month: 4
+  url: "https://github.com/maher-coder/amr-benchmark"
+  abstract: >-
+    Cross-cohort benchmark of machine-learning antimicrobial-resistance
+    prediction on 88,863 public bacterial genome assemblies. Three
+    generalisable patterns documented quantitatively; ten falsifiable
+    generalisations distilled.
